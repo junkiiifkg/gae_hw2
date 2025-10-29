@@ -69,3 +69,15 @@ This project is structured using fundamental Object-Oriented Programming (OOP) r
 This project uses the nlohmann/json library to handle external data.
 
 * menu.json: Contains all available restaurant items, their prices, and detailed taste profiles, organized by category. This file is loaded at runtime.
+
+* weights.json: Stores the learned weights of the AI's linear regression model. The application reads this file on startup and saves to it after the model is trained with new user feedback.
+
+## AI and Taste Balance
+
+The bot's core feature is its ability to suggest menus and learn from user feedback.
+
+* Random Menu (AI Optimized): When the user requests a random menu, the bot generates multiple (e.g., 30-40) random menus and uses the ai::LinearRegression model to predict user satisfaction for each. It then suggests the menu with the highest predicted score.
+
+* Taste Profile Menu: If the user provides a target taste balance (e.g., high sweet, low sour), the bot iterates through the catalog and picks the item from each category that is closest (using Euclidean distance) to the user's desired profile.
+
+* Training: After a menu is suggested or built, the user is asked for a satisfaction score (0.0 to 1.0). This score, along with the menu's average taste vector, is used to train the model, updating its weights to make better predictions in the future.

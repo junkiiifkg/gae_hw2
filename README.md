@@ -35,3 +35,37 @@ This project is structured using fundamental Object-Oriented Programming (OOP) r
 * **Aggregation:** A weaker "has-a" relationship where one class contains another, but the contained class can exist independently of the container.
 
 ### Class Relations in This Project
+
+### Inheritance:
+
+* **Base Class:** MenuItem (An abstract base class).
+
+* **Derived Classes:** Starter, Salad, MainCourse, Drink, Appetizer, and Dessert all inherit from MenuItem. Each derived class provides concrete implementations for virtual functions like printInfo and customize, and adds its own specific attributes (e.g., isHot for Starter).
+
+### Composition:
+
+* **Relation:** The User class is composed of a Menu object.
+
+* **Details:** The User class has a member variable Menu userMenu; (as seen in Menu.hpp). This Menu object is a part of the User, and its lifecycle is bound to the User object. A User owns a Menu.
+
+* **Relation:** The User class is composed of a MenuItem object.
+
+* **Details:** The Menu class contains a std::vector<std::shared_ptr<MenuItem>> items;. This represents a composition relationship as the Menu "owns" the MenuItem objects it contains.
+
+### Association:
+
+* **Relations:** The User class is associated with the menu catalog.
+
+* **Details:** The User class uses the menu catalog (std::map<std::string, std::vector<json>>), passed as a parameter to its interact method, to display available items. However, the User does not own this catalog or control its lifecycle. They are independent entities that interact.
+
+### Aggregation:
+
+* **Relations:** The Menu class aggregates the total cost and average taste balance.
+
+* **Details:** The Menu class holds totalCost and tasteAvg attributes. These values are derived from the MenuItem objects it contains. They represent an aggregation of data from the parts that it is composed of.
+
+## JSON File Integration
+
+This project uses the nlohmann/json library to handle external data.
+
+* menu.json: Contains all available restaurant items, their prices, and detailed taste profiles, organized by category. This file is loaded at runtime.

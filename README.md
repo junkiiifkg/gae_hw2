@@ -1,10 +1,21 @@
-# Restaurant Bot
-## Class Relations Explanation:
-### 1. Inheritance:
-* Base Class: MenuItem Pure virtual functions for getting and setting attributes (name, price, taste balance). Derived classes (e.g., Starter, Salad, MainCourse, Drink, Appetizer, Dessert) inherit from MenuItem. Each derived class overrides virtual functions and introduces additional attributes and functionality specific to its type.
-### 2. Association:
-* User Class Associated with Menu Class: User class contains a Menu object as an attribute. The User and Menu classes are associated, but not tightly coupled, as a User can exist independently of a Menu.
-### 3. Composition:
-* Menu Class Composed of MenuItem Objects: Menu class contains a vector of MenuItem pointers. This represents a composition relationship, as a Menu "owns" the MenuItem objects. When a Menu is destroyed, the associated MenuItem objects are also cleaned up.
-### 4. Aggregation:
-* Menu Class Aggregating Overall Taste Balance and Total Cost: Menu class aggregates attributes for overall taste balance and total cost. This represents an aggregation relationship, as these attributes can exist independently of the Menu. They are part of the Menu, but they can also be considered standalone.
+# Restaurant Bot 🍽️
+
+This C++ console application acts as a restaurant bot. It helps users build a menu, get food recommendations based on their taste preferences, and uses a simple linear regression model to predict user satisfaction.
+
+## Features
+
+* **Interactive Menu:** Add, remove, update, and view items on your personal menu.
+
+* **AI-Powered Suggestions:**
+
+  * Get a random menu suggestion optimized by an AI model for the best-predicted satisfaction.
+
+  * Request a menu tailored to your specific taste profile (sweet, salty, sour, bitter, umami/savory).
+
+* **Satisfaction-Based Learning:** Train a linear regression model by rating your suggested or final menu to improve future recommendations.
+
+* **Dynamic Menu:** Loads menu items from an external `menu.json` file.
+
+* **Persistent AI Model:** The AI model's weights are saved to and loaded from `weights.json`.
+
+* **Object-Oriented Design:** Uses inheritance, composition, and association to model menu items, menus, and users.
